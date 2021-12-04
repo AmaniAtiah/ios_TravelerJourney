@@ -8,6 +8,8 @@
 import UIKit
 
 class JourneyVC: UIViewController {
+    var journey: Journey!
+    var index: Int!
     
     var journeyArray = [
         Journey(title: "رحلتي الى القاهرة", image: UIImage(named: "Image"), details: "رحلتي الى القاهرة"),
@@ -19,8 +21,11 @@ class JourneyVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(newJourneyAdded), name: NSNotification.Name(rawValue: "newJourneyAdded"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(currentJourneyEdited), name: NSNotification.Name(rawValue: "CurrentJourneyEdited"), object: nil)
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -35,6 +40,15 @@ class JourneyVC: UIViewController {
             
         }
     }
+    
+    @objc func currentJourneyEdited(notification: Notification) {
+        if let journey = notification.userInfo?["editedJourney"] as? Journey {
+            if let index = notification.userInfo?["editedJourneyIndex"] as? Int {
+                journeyArray[index] = journey
+                tableView.reloadData()
+            }
+        }
+     }
     
    
     
@@ -65,6 +79,7 @@ extension JourneyVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
         let deleteAction = UIContextualAction(style: .destructive, title: "") {(action, view, completionHandler) in
             self.journeyArray.remove(at: indexPath.row)
             tableView.beginUpdates()
@@ -74,10 +89,30 @@ extension JourneyVC: UITableViewDataSource, UITableViewDelegate {
         }
         
         let updateAction = UIContextualAction(style: .normal, title: "") {(action, view, completionHandler) in
+            
+    
+            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "NewJourneyVC") as? NewJourneyVC {
+                
+                viewController.isCreationJourney = false
+                viewController.editedJourney = self.journey
+                viewController.editedJourneyIndex = self.index
+                
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
             tableView.beginUpdates()
+            
+ 
             tableView.endUpdates()
             completionHandler(true)
+            
+       //     let journey = self.journeyArray[indexPath.row]
+            
+   
+
+      
         }
+        
         
         deleteAction.image = UIImage(systemName: "trash")
         updateAction.image = UIImage(systemName: "square.and.pencil")
@@ -89,3 +124,4 @@ extension JourneyVC: UITableViewDataSource, UITableViewDelegate {
     
     
 }
+
