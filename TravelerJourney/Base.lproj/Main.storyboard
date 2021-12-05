@@ -20,15 +20,15 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="journeyCell" rowHeight="177" id="Z1Q-1T-jU2" customClass="JourneyCell" customModule="TravelerJourney" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="177"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="journeyCell" rowHeight="240" id="Z1Q-1T-jU2" customClass="JourneyCell" customModule="TravelerJourney" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z1Q-1T-jU2" id="tBH-7o-jaA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="177"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="WXG-am-3zC">
-                                                    <rect key="frame" x="10" y="10" width="394" height="157"/>
+                                                    <rect key="frame" x="10" y="10" width="394" height="220"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rzm-YS-Hcj">
                                                             <rect key="frame" x="0.0" y="0.0" width="394" height="100"/>
@@ -37,7 +37,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pq4-au-bk7">
-                                                            <rect key="frame" x="358" y="101" width="36" height="56"/>
+                                                            <rect key="frame" x="358" y="101" width="36" height="64"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSw-Dv-Mqv">
                                                                     <rect key="frame" x="0.0" y="0.0" width="36" height="38.5"/>
@@ -49,13 +49,18 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AC4-zy-H1V">
-                                                                    <rect key="frame" x="0.0" y="43.5" width="36" height="12.5"/>
+                                                                    <rect key="frame" x="0.0" y="43.5" width="36" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9S9-Do-jhc">
+                                                            <rect key="frame" x="324.5" y="166" width="69.5" height="54"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" title="update"/>
+                                                        </button>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="rzm-YS-Hcj" firstAttribute="width" secondItem="WXG-am-3zC" secondAttribute="width" id="c4n-mK-LlR"/>
@@ -74,6 +79,7 @@
                                             <outlet property="journeyCreationDateLabel" destination="AC4-zy-H1V" id="mdC-4K-Cvz"/>
                                             <outlet property="journeyImageView" destination="rzm-YS-Hcj" id="eFl-pJ-Enc"/>
                                             <outlet property="journeyTitleLabel" destination="sSw-Dv-Mqv" id="HYk-Ve-bxu"/>
+                                            <outlet property="updateButtonClicked" destination="9S9-Do-jhc" id="05D-Yk-8Fr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -90,17 +96,17 @@
                     </view>
                     <navigationItem key="navigationItem" title="رحلاتي" id="pTN-7P-Xpf"/>
                     <connections>
-                        <outlet property="tableView" destination="JZd-7J-gFO" id="Q3A-CN-JrV"/>
+                        <outlet property="journeytableView" destination="JZd-7J-gFO" id="Q3A-CN-JrV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1844.9275362318842" y="82.366071428571431"/>
         </scene>
-        <!--View Controller-->
+        <!--Journey DetailsVC-->
         <scene sceneID="hT6-Wv-P14">
             <objects>
-                <viewController id="s9E-FZ-bS6" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailsVC" id="s9E-FZ-bS6" customClass="JourneyDetailsVC" customModule="TravelerJourney" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sZw-xg-GJx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,6 +144,11 @@
                             <constraint firstItem="brt-At-MII" firstAttribute="trailing" secondItem="IK7-xV-YBi" secondAttribute="trailing" constant="10" id="zaS-fC-YrD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="journeyDetailsLabel" destination="IK7-xV-YBi" id="YbK-uE-SWx"/>
+                        <outlet property="journeyImageView" destination="nSF-lq-9bB" id="UiY-xq-T8a"/>
+                        <outlet property="journeyTitleLabel" destination="fx8-pP-jmM" id="CDh-d8-pfb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iq6-3v-hfS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -315,7 +326,7 @@
                     <tabBarItem key="tabBarItem" title="اضافة" image="plus.square.on.square" catalog="system" id="2gy-c1-isQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="msf-f6-ET8">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.75245048910000001" green="0.95447450570000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="largeTitleTextAttributes">

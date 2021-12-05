@@ -12,6 +12,7 @@ class JourneyCell: UITableViewCell {
     @IBOutlet weak var journeyTitleLabel: UILabel!
     @IBOutlet weak var journeyCreationDateLabel: UILabel!
     @IBOutlet weak var journeyImageView: UIImageView!
+    @IBOutlet weak var updateButtonClicked: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E304DDE127584DA500D5102A /* NewJourneyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E304DDE027584DA500D5102A /* NewJourneyVC.swift */; };
+		E33DD4DB275BD22C009271D5 /* JourneyDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33DD4DA275BD22C009271D5 /* JourneyDetailsVC.swift */; };
 		E387C7072756BB4400FA8A7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E387C7062756BB4400FA8A7D /* AppDelegate.swift */; };
 		E387C7092756BB4400FA8A7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E387C7082756BB4400FA8A7D /* SceneDelegate.swift */; };
 		E387C70B2756BB4400FA8A7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E387C70A2756BB4400FA8A7D /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		E304DDE027584DA500D5102A /* NewJourneyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJourneyVC.swift; sourceTree = "<group>"; };
+		E33DD4DA275BD22C009271D5 /* JourneyDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetailsVC.swift; sourceTree = "<group>"; };
 		E387C7032756BB4400FA8A7D /* TravelerJourney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelerJourney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E387C7062756BB4400FA8A7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E387C7082756BB4400FA8A7D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				E387C7382756BEF100FA8A7D /* Journey.swift */,
 				E387C73A2756D60B00FA8A7D /* JourneyCell.swift */,
 				E304DDE027584DA500D5102A /* NewJourneyVC.swift */,
+				E33DD4DA275BD22C009271D5 /* JourneyDetailsVC.swift */,
 			);
 			path = TravelerJourney;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				E304DDE127584DA500D5102A /* NewJourneyVC.swift in Sources */,
 				E387C7072756BB4400FA8A7D /* AppDelegate.swift in Sources */,
 				E387C7092756BB4400FA8A7D /* SceneDelegate.swift in Sources */,
+				E33DD4DB275BD22C009271D5 /* JourneyDetailsVC.swift in Sources */,
 				E387C7372756BDC200FA8A7D /* JourneyVC.swift in Sources */,
 				E387C73B2756D60B00FA8A7D /* JourneyCell.swift in Sources */,
 				E387C7392756BEF100FA8A7D /* Journey.swift in Sources */,
