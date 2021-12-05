@@ -19,7 +19,7 @@ class NewJourneyVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if isCreationJourney == false {
+        if !isCreationJourney  {
             mainButton.setTitle("تعديل", for: .normal)
             navigationItem.title = "تعديل الرحلة"
             
@@ -64,8 +64,8 @@ class NewJourneyVC: UIViewController {
             
             let closeAction = UIAlertAction(title: "تم", style: UIAlertAction.Style.default) { _ in
                 self.navigationController?.popViewController(animated: true)
-//                self.titleTextFiled.text = ""
-//                self.detailsTextView.text = ""
+                self.titleTextFiled.text = ""
+                self.detailsTextView.text = ""
                 
             }
             alert.addAction(closeAction)

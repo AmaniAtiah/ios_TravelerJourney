@@ -8,16 +8,16 @@
 import UIKit
 
 class JourneyVC: UIViewController {
-    var journey: Journey!
+
     var index: Int!
-    
+    var journey: Journey!
     var journeyArray = [
         Journey(title: "رحلتي الى القاهرة", image: UIImage(named: "Image"), details: "رحلتي الى القاهرة"),
         
         Journey(title: "رحلتي الى دبي", image: UIImage(named: "Image"), details: "رحلتي الى دبي")
         
     ]
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var journeytableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,8 +27,10 @@ class JourneyVC: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(currentJourneyEdited), name: NSNotification.Name(rawValue: "CurrentJourneyEdited"), object: nil)
         
-        tableView.dataSource = self
-        tableView.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(journeyDeleted), name: NSNotification.Name(rawValue: "journeyDeleted"), object: nil)
+        
+        journeytableView.dataSource = self
+        journeytableView.delegate = self
     
 
     }
@@ -36,7 +38,7 @@ class JourneyVC: UIViewController {
     @objc func newJourneyAdded(notification: Notification) {
         if let journey = notification.userInfo?["addedJourney"] as? Journey {
             journeyArray.append(journey)
-            tableView.reloadData()
+            journeytableView.reloadData()
             
         }
     }
@@ -45,10 +47,17 @@ class JourneyVC: UIViewController {
         if let journey = notification.userInfo?["editedJourney"] as? Journey {
             if let index = notification.userInfo?["editedJourneyIndex"] as? Int {
                 journeyArray[index] = journey
-                tableView.reloadData()
+                journeytableView.reloadData()
             }
         }
      }
+    
+    @objc func journeyDeleted(notification: Notification) {
+        if let index = notification.userInfo?["deletedJourneyIndex"] as? Int {
+            journeyArray.remove(at: index)
+            journeytableView.reloadData()
+        }
+    }
     
    
     
@@ -65,42 +74,99 @@ extension JourneyVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "journeyCell") as! JourneyCell
         
-        let journey = journeyArray[indexPath.row]
+         journey = journeyArray[indexPath.row]
         cell.journeyTitleLabel.text = journey.title
+  
+ 
         
         if journey.image != nil {
             cell.journeyImageView.image = journey.image
         } else {
             cell.journeyImageView.image = UIImage(named: "Image")
         }
+  
+
+        cell.updateButtonClicked.tag = indexPath.row
+        cell.updateButtonClicked.addTarget(self, action: #selector(updateButton), for: .touchUpInside)
+        
         
             
         return cell
     }
     
+    @objc func updateButton(sender: UIButton) {
+        
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "NewJourneyVC") as? NewJourneyVC {
+            
+            viewController.isCreationJourney = false
+            viewController.editedJourney = journeyArray[indexPath.row]
+
+            //journey =
+            viewController.editedJourneyIndex = index
+            
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+        
+    }
+    
+    
+    
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
         let deleteAction = UIContextualAction(style: .destructive, title: "") {(action, view, completionHandler) in
-            self.journeyArray.remove(at: indexPath.row)
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates()
+            
+            let confirmAlert = UIAlertController(title: "تنبية", message: "هل انت متاكد من رغبتك في اتمام عملية الحذف", preferredStyle: .alert)
+            
+            let confirmAction = UIAlertAction(title: "تاكيد الحذف", style: .destructive) { alert in
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "journeyDeleted"), object: nil, userInfo: ["deletedJourneyIndex": indexPath.row])
+                
+                let alert = UIAlertController(title: "تم", message: "تم حذف المهمة بنجاح", preferredStyle: .alert)
+                
+                let closeAction = UIAlertAction(title: "تم", style: .default) {
+                    alert in
+                    self.navigationController?.popViewController(animated: true)
+                }
+                alert.addAction(closeAction)
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+   
+            
+            let cancelAction = UIAlertAction(title: "اغلاق", style: .default, handler: nil)
+            
+           // self.journeyArray.remove(at: indexPath.row)
+          //  tableView.beginUpdates()
+            
+            
+            //tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            confirmAlert.addAction(confirmAction)
+            self.present(confirmAlert, animated: true, completion: nil)
+            confirmAlert.addAction(cancelAction)
+           // tableView.endUpdates()
             completionHandler(true)
+            
+           // self.JourneytableView.reloadData()
+
+            
+  
+            
+                
         }
         
         let updateAction = UIContextualAction(style: .normal, title: "") {(action, view, completionHandler) in
             
     
+   
+            tableView.beginUpdates()
             if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "NewJourneyVC") as? NewJourneyVC {
                 
                 viewController.isCreationJourney = false
-                viewController.editedJourney = self.journey
-                viewController.editedJourneyIndex = self.index
-                
+                viewController.editedJourney = self.journeyArray[indexPath.row]
+                viewController.editedJourneyIndex = indexPath.row
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
-            
-            tableView.beginUpdates()
             
  
             tableView.endUpdates()
@@ -122,6 +188,20 @@ extension JourneyVC: UITableViewDataSource, UITableViewDelegate {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let journey = journeyArray[indexPath.row]
+        let vc = storyboard?.instantiateViewController(withIdentifier: "detailsVC") as? JourneyDetailsVC
+    
+        
+        if let viewController = vc {
+            viewController.journey = journey
+            viewController.index = indexPath.row
+          
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+     
+    }
     
 }
 
