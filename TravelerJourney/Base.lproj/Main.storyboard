@@ -183,6 +183,9 @@
                                                 <buttonConfiguration key="configuration" style="filled" title="Button">
                                                     <color key="baseBackgroundColor" red="0.86274509799999999" green="0.72549019609999998" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="changeButtonClicked:" destination="Y29-dX-4jA" eventType="touchUpInside" id="BsC-Bp-cOO"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
