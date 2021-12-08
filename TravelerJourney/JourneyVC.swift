@@ -6,22 +6,18 @@
 //
 
 import UIKit
+import CoreData
 
 class JourneyVC: UIViewController {
 
     var index: Int!
     var journey: Journey!
-    var journeyArray = [
-        Journey(title: "رحلتي الى القاهرة", image: UIImage(named: "Image"), details: "رحلتي الى القاهرة"),
-        
-        Journey(title: "رحلتي الى دبي", image: UIImage(named: "Image"), details: "رحلتي الى دبي")
-        
-    ]
+    var journeyArray: [Journey] = []
     @IBOutlet weak var journeytableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.journeyArray = getJounreys()
         
         NotificationCenter.default.addObserver(self, selector: #selector(newJourneyAdded), name: NSNotification.Name(rawValue: "newJourneyAdded"), object: nil)
         
@@ -36,18 +32,20 @@ class JourneyVC: UIViewController {
     }
    
     @objc func newJourneyAdded(notification: Notification) {
-        if let journey = notification.userInfo?["addedJourney"] as? Journey {
-            journeyArray.append(journey)
+        if let myJourney = notification.userInfo?["addedJourney"] as? Journey {
+            journeyArray.append(myJourney)
             journeytableView.reloadData()
+            storeJourney(journey: myJourney)
             
         }
     }
     
     @objc func currentJourneyEdited(notification: Notification) {
-        if let journey = notification.userInfo?["editedJourney"] as? Journey {
+        if let myJourney = notification.userInfo?["editedJourney"] as? Journey {
             if let index = notification.userInfo?["editedJourneyIndex"] as? Int {
-                journeyArray[index] = journey
+                journeyArray[index] = myJourney
                 journeytableView.reloadData()
+                updateJourney(journey: myJourney, index: index)
             }
         }
      }
@@ -60,6 +58,97 @@ class JourneyVC: UIViewController {
     }
     
    
+    func storeJourney(journey: Journey) {
+        guard let appDelegates = UIApplication.shared.delegate as? AppDelegate else {return}
+        let manageContext = appDelegates.persistentContainer.viewContext
+        guard let journeyEntity = NSEntityDescription.entity(forEntityName: "Journey", in: manageContext) else {return}
+        let journeyObject = NSManagedObject.init(entity: journeyEntity, insertInto: manageContext)
+        journeyObject.setValue(journey.title, forKey: "title")
+        journeyObject.setValue(journey.details, forKey: "details")
+        
+        if let image = journey.image {
+            let imageData = image.jpegData(compressionQuality: 1)
+            journeyObject.setValue(imageData, forKey: "image")
+            
+        }
+        do {
+            try manageContext.save()
+            print("Success")
+            
+        } catch {
+            print("Error")
+        }
+    }
+    
+    func updateJourney(journey: Journey, index: Int) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Journey")
+        
+        do {
+            let result = try context.fetch(fetchRequest) as! [NSManagedObject]
+            
+            result[index].setValue(journey.title, forKey: "title")
+            result[index].setValue(journey.details, forKey: "details")
+            
+            if let image = journey.image {
+                let imageData = image.jpegData(compressionQuality: 1)
+                result[index].setValue(imageData, forKey: "image")
+                
+            }
+            
+            try context.save()
+            print("=====Success=====")
+        } catch {
+            print("=====Error=====")
+        }
+    }
+    
+    func deleteJourney(index: Int) {
+        guard let appDelegat = UIApplication.shared.delegate as? AppDelegate else {return}
+        let context = appDelegat.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Journey")
+        
+        do {
+            let result = try context.fetch(fetchRequest) as! [NSManagedObject]
+            let journeyDelete = result[index]
+            context.delete(journeyDelete)
+            
+            try context.save()
+            print("====Success=====")
+            
+        } catch {
+            print("=====Error=====")
+        }
+    }
+    
+    func getJounreys() -> [Journey] {
+        var journeys: [Journey] = []
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return []}
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Journey")
+        
+        do {
+            let result = try context.fetch(fetchRequest) as! [NSManagedObject]
+            
+            for managedJourney in result {
+                print(managedJourney)
+                let title = managedJourney.value(forKey: "title") as? String
+                let details = managedJourney.value(forKey: "details") as? String
+                
+                var journeyImage: UIImage? = nil
+                if let imageFormContext = managedJourney.value(forKey: "image") as? Data {
+                    journeyImage = UIImage(data: imageFormContext)
+                }
+                
+                let journey = Journey(title: title ?? "", image: journeyImage, details: details ?? "")
+                journeys.append(journey)
+            }
+        } catch {
+            print("=====Error======")
+        }
+        return journeys
+    }
     
 }
 
@@ -86,30 +175,30 @@ extension JourneyVC: UITableViewDataSource, UITableViewDelegate {
         }
   
 
-        cell.updateButtonClicked.tag = indexPath.row
-        cell.updateButtonClicked.addTarget(self, action: #selector(updateButton), for: .touchUpInside)
+//        cell.updateButtonClicked.tag = indexPath.row
+//        cell.updateButtonClicked.addTarget(self, action: #selector(updateButton), for: .touchUpInside)
         
         
             
         return cell
     }
     
-    @objc func updateButton(sender: UIButton) {
-        
-        let indexPath = IndexPath(row: sender.tag, section: 0)
-        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "NewJourneyVC") as? NewJourneyVC {
-            
-            viewController.isCreationJourney = false
-            viewController.editedJourney = journeyArray[indexPath.row]
-
-            //journey =
-            viewController.editedJourneyIndex = index
-            
-            self.navigationController?.pushViewController(viewController, animated: true)
-        }
-        
-    }
-    
+//    @objc func updateButton(sender: UIButton) {
+//
+//        let indexPath = IndexPath(row: sender.tag, section: 0)
+//        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "NewJourneyVC") as? NewJourneyVC {
+//
+//            viewController.isCreationJourney = false
+//            viewController.editedJourney = journeyArray[indexPath.row]
+//
+//            //journey =
+//            viewController.editedJourneyIndex = index
+//
+//            self.navigationController?.pushViewController(viewController, animated: true)
+//        }
+//
+//    }
+//
     
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

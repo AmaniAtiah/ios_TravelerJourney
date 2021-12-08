@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E304DDE127584DA500D5102A /* NewJourneyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E304DDE027584DA500D5102A /* NewJourneyVC.swift */; };
+		E3192C04275D68CD00EBC504 /* JourneyModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3192C02275D68CD00EBC504 /* JourneyModel.xcdatamodeld */; };
 		E33DD4DB275BD22C009271D5 /* JourneyDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33DD4DA275BD22C009271D5 /* JourneyDetailsVC.swift */; };
 		E387C7072756BB4400FA8A7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E387C7062756BB4400FA8A7D /* AppDelegate.swift */; };
 		E387C7092756BB4400FA8A7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E387C7082756BB4400FA8A7D /* SceneDelegate.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		E304DDE027584DA500D5102A /* NewJourneyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJourneyVC.swift; sourceTree = "<group>"; };
+		E3192C03275D68CD00EBC504 /* JourneyModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JourneyModel.xcdatamodel; sourceTree = "<group>"; };
 		E33DD4DA275BD22C009271D5 /* JourneyDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetailsVC.swift; sourceTree = "<group>"; };
 		E387C7032756BB4400FA8A7D /* TravelerJourney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelerJourney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E387C7062756BB4400FA8A7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				E387C73A2756D60B00FA8A7D /* JourneyCell.swift */,
 				E304DDE027584DA500D5102A /* NewJourneyVC.swift */,
 				E33DD4DA275BD22C009271D5 /* JourneyDetailsVC.swift */,
+				E3192C02275D68CD00EBC504 /* JourneyModel.xcdatamodeld */,
 			);
 			path = TravelerJourney;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E387C70B2756BB4400FA8A7D /* ViewController.swift in Sources */,
+				E3192C04275D68CD00EBC504 /* JourneyModel.xcdatamodeld in Sources */,
 				E304DDE127584DA500D5102A /* NewJourneyVC.swift in Sources */,
 				E387C7072756BB4400FA8A7D /* AppDelegate.swift in Sources */,
 				E387C7092756BB4400FA8A7D /* SceneDelegate.swift in Sources */,
@@ -638,6 +642,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E3192C02275D68CD00EBC504 /* JourneyModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E3192C03275D68CD00EBC504 /* JourneyModel.xcdatamodel */,
+			);
+			currentVersion = E3192C03275D68CD00EBC504 /* JourneyModel.xcdatamodel */;
+			path = JourneyModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E387C6FB2756BB4400FA8A7D /* Project object */;
 }

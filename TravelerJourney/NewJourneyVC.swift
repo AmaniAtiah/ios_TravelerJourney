@@ -37,7 +37,7 @@ class NewJourneyVC: UIViewController {
     @IBAction func addButtonClicked(_ sender: Any) {
         if isCreationJourney {
         
-        let journey = Journey(title: titleTextFiled.text!, image: nil, details: detailsTextView.text)
+            let journey = Journey(title: titleTextFiled.text!, image: journeyImageView.image, details: detailsTextView.text)
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newJourneyAdded"), object: nil, userInfo: ["addedJourney" : journey])
         
@@ -56,7 +56,7 @@ class NewJourneyVC: UIViewController {
         })
             
         } else {
-            let journey = Journey(title: titleTextFiled.text!, image: nil, details: detailsTextView.text)
+            let journey = Journey(title: titleTextFiled.text!, image: journeyImageView.image, details: detailsTextView.text)
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CurrentJourneyEdited"), object: nil, userInfo: ["editedJourney": journey, "editedJourneyIndex": editedJourneyIndex])
             
@@ -79,4 +79,20 @@ class NewJourneyVC: UIViewController {
             
     }
     
+    @IBAction func changeButtonClicked(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    
+}
+
+extension NewJourneyVC: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
+        dismiss(animated: true, completion: nil)
+        journeyImageView.image = image
+    }
 }
