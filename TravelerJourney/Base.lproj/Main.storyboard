@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--رحلاتي-->
+        <!--الرحلات -->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="JourneyVC" customModule="TravelerJourney" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,7 +37,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pq4-au-bk7">
-                                                            <rect key="frame" x="358" y="101" width="36" height="64"/>
+                                                            <rect key="frame" x="358" y="101" width="36" height="119"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSw-Dv-Mqv">
                                                                     <rect key="frame" x="0.0" y="0.0" width="36" height="38.5"/>
@@ -49,18 +49,13 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AC4-zy-H1V">
-                                                                    <rect key="frame" x="0.0" y="43.5" width="36" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="43.5" width="36" height="75.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9S9-Do-jhc">
-                                                            <rect key="frame" x="324.5" y="166" width="69.5" height="54"/>
-                                                            <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" title="update"/>
-                                                        </button>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="rzm-YS-Hcj" firstAttribute="width" secondItem="WXG-am-3zC" secondAttribute="width" id="c4n-mK-LlR"/>
@@ -79,7 +74,6 @@
                                             <outlet property="journeyCreationDateLabel" destination="AC4-zy-H1V" id="mdC-4K-Cvz"/>
                                             <outlet property="journeyImageView" destination="rzm-YS-Hcj" id="eFl-pJ-Enc"/>
                                             <outlet property="journeyTitleLabel" destination="sSw-Dv-Mqv" id="HYk-Ve-bxu"/>
-                                            <outlet property="updateButtonClicked" destination="9S9-Do-jhc" id="05D-Yk-8Fr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -94,7 +88,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JZd-7J-gFO" secondAttribute="trailing" id="ey6-Ci-zQF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="رحلاتي" id="pTN-7P-Xpf"/>
+                    <navigationItem key="navigationItem" title="الرحلات " id="pTN-7P-Xpf" userLabel="الرحلات"/>
                     <connections>
                         <outlet property="journeytableView" destination="JZd-7J-gFO" id="Q3A-CN-JrV"/>
                     </connections>
