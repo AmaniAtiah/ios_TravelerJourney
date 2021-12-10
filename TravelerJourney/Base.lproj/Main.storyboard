@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--الرحلات -->
+        <!--رحلاتي -->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="JourneyVC" customModule="TravelerJourney" customModuleProvider="target" sceneMemberID="viewController">
@@ -88,7 +88,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JZd-7J-gFO" secondAttribute="trailing" id="ey6-Ci-zQF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="الرحلات " id="pTN-7P-Xpf" userLabel="الرحلات"/>
+                    <navigationItem key="navigationItem" title="رحلاتي " id="pTN-7P-Xpf" userLabel="الرحلات"/>
                     <connections>
                         <outlet property="journeytableView" destination="JZd-7J-gFO" id="Q3A-CN-JrV"/>
                     </connections>
@@ -353,7 +353,7 @@
                     <tabBarItem key="tabBarItem" title="اضافة" image="plus.square.on.square" catalog="system" id="2gy-c1-isQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="msf-f6-ET8">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.75245048910000001" green="0.95447450570000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="largeTitleTextAttributes">
