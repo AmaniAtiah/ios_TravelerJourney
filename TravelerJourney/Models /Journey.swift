@@ -12,4 +12,5 @@ struct Journey {
     var title: String
     var image: UIImage? = nil
     var details: String? = nil
+    var date: String? = nil 
 }

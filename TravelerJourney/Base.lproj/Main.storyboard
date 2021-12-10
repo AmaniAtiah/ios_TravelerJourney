@@ -106,7 +106,7 @@
         <!--Journey DetailsVC-->
         <scene sceneID="hT6-Wv-P14">
             <objects>
-                <viewController storyboardIdentifier="detailsVC" id="s9E-FZ-bS6" customClass="JourneyDetailsVC" customModule="TravelerJourney" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailsVC" hidesBottomBarWhenPushed="YES" id="s9E-FZ-bS6" customClass="JourneyDetailsVC" customModule="TravelerJourney" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sZw-xg-GJx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,7 +162,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" alignment="bottom" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="6I1-Mr-xfl" userLabel="User input SV">
+                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" alignment="bottom" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="6I1-Mr-xfl" userLabel="User input SV">
                                 <rect key="frame" x="10" y="98" width="394" height="629"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="giG-C4-nfx">
@@ -174,26 +174,24 @@
                                                     <constraint firstAttribute="height" constant="140" id="XnI-xF-m8c"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdU-BK-EDL">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UP2-05-4OZ">
                                                 <rect key="frame" x="0.0" y="140" width="394" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="jJx-1M-f6v"/>
+                                                    <constraint firstAttribute="height" constant="40" id="pOq-e8-Zxn"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Button">
-                                                    <color key="baseBackgroundColor" red="0.86274509799999999" green="0.72549019609999998" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="تغيير الصورة">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="19"/>
+                                                    <color key="baseBackgroundColor" red="0.86087566609999999" green="0.72586389539999996" blue="0.69026059500000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="changeButtonClicked:" destination="Y29-dX-4jA" eventType="touchUpInside" id="BsC-Bp-cOO"/>
+                                                    <action selector="changeButtonClicked:" destination="Y29-dX-4jA" eventType="touchUpInside" id="zkl-IA-gxd"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="kdU-BK-EDL" firstAttribute="width" secondItem="1if-Ic-jYO" secondAttribute="width" id="UGB-rk-ZoL"/>
-                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DY4-lT-5LX" userLabel="journey title SV">
-                                        <rect key="frame" x="0.0" y="212" width="394" height="72"/>
+                                        <rect key="frame" x="0.0" y="210" width="394" height="72"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عنوان الرحلة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0u0-iO-PBI">
                                                 <rect key="frame" x="299" y="0.0" width="95" height="24"/>
@@ -211,8 +209,27 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8hf-EZ-w9E" userLabel="journey title SV">
+                                        <rect key="frame" x="0.0" y="312" width="394" height="72"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تاريخ الرحلة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lf-Jq-Cu5">
+                                                <rect key="frame" x="304.5" y="0.0" width="89.5" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u3Y-sL-kpX">
+                                                <rect key="frame" x="0.0" y="32" width="394" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="cra-tO-vOQ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WLu-c0-fMc" userLabel="journey details SV">
-                                        <rect key="frame" x="0.0" y="316" width="394" height="313"/>
+                                        <rect key="frame" x="0.0" y="414" width="394" height="215"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تفاصيل الرحلة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIk-FT-ekw">
                                                 <rect key="frame" x="285" y="0.0" width="109" height="24"/>
@@ -220,19 +237,31 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="Jum-RJ-wa1">
-                                                <rect key="frame" x="0.0" y="32" width="394" height="281"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jum-RJ-wa1">
+                                                <rect key="frame" x="0.0" y="32" width="394" height="183"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <color key="textColor" systemColor="labelColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="183" id="MXd-wn-pak"/>
+                                                </constraints>
+                                                <attributedString key="attributedText">
+                                                    <fragment>
+                                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </string>
+                                                        <attributes>
+                                                            <color key="NSColor" systemColor="labelColor"/>
+                                                            <font key="NSFont" metaFont="system" size="14"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="UP2-05-4OZ" firstAttribute="width" secondItem="6I1-Mr-xfl" secondAttribute="width" id="7Dv-pa-dph"/>
                                     <constraint firstItem="Jum-RJ-wa1" firstAttribute="width" secondItem="6I1-Mr-xfl" secondAttribute="width" id="UpN-My-8zR"/>
+                                    <constraint firstItem="u3Y-sL-kpX" firstAttribute="width" secondItem="6I1-Mr-xfl" secondAttribute="width" id="dli-PR-f68"/>
                                     <constraint firstItem="n8k-lx-ySt" firstAttribute="width" secondItem="6I1-Mr-xfl" secondAttribute="width" id="yMf-U5-Kza"/>
                                 </constraints>
                             </stackView>
@@ -265,6 +294,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="رحلة جديدة" largeTitleDisplayMode="never" id="moV-d6-NpR"/>
                     <connections>
+                        <outlet property="dateTextFiled" destination="u3Y-sL-kpX" id="05m-lI-IF2"/>
                         <outlet property="detailsTextView" destination="Jum-RJ-wa1" id="3L2-4F-HUs"/>
                         <outlet property="journeyImageView" destination="1if-Ic-jYO" id="i4Z-Xj-FAU"/>
                         <outlet property="mainButton" destination="ukv-aZ-qOl" id="A4t-et-0Ti"/>
@@ -329,7 +359,7 @@
                     <tabBarItem key="tabBarItem" title="اضافة" image="plus.square.on.square" catalog="system" id="2gy-c1-isQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="msf-f6-ET8">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.75245048910000001" green="0.95447450570000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="largeTitleTextAttributes">

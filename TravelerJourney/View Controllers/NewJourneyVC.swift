@@ -16,6 +16,10 @@ class NewJourneyVC: UIViewController {
     @IBOutlet weak var titleTextFiled: UITextField!
     @IBOutlet weak var detailsTextView: UITextView!
     @IBOutlet weak var mainButton: UIButton!
+    @IBOutlet weak var dateTextFiled: UITextField!
+    
+    var datePicker = UIDatePicker()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,17 +31,48 @@ class NewJourneyVC: UIViewController {
                 titleTextFiled.text = journey.title
                 detailsTextView.text = journey.details
                 journeyImageView.image = journey.image
+                dateTextFiled.text = journey.date
             }
         }
+
+        createDatePicker()
 
 
     }
     
+    func createDatePicker(){
+        dateTextFiled.textAlignment = .center
+
+        datePicker.datePickerMode = .date
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(dateChanged))
+        toolbar.setItems([doneBtn], animated: true)
+
+        datePicker.preferredDatePickerStyle = .wheels
+
+        dateTextFiled.inputAccessoryView = toolbar
+
+        dateTextFiled.inputView = datePicker    
+
+    }
+    
+    @objc func dateChanged(){
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        formatter.dateFormat = "dd/MM/yyyy"
+        
+        dateTextFiled.text = formatter.string(from: datePicker.date)
+        self.view.endEditing(true)
+    }
+    
+
 
     @IBAction func addButtonClicked(_ sender: Any) {
         if isCreationJourney {
         
-            let journey = Journey(title: titleTextFiled.text!, image: journeyImageView.image, details: detailsTextView.text)
+            let journey = Journey(title: titleTextFiled.text!, image: journeyImageView.image, details: detailsTextView.text, date: dateTextFiled.text!)
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newJourneyAdded"), object: nil, userInfo: ["addedJourney" : journey])
         
@@ -48,6 +83,7 @@ class NewJourneyVC: UIViewController {
             
             self.titleTextFiled.text = ""
             self.detailsTextView.text = ""
+            self.dateTextFiled.text = ""
             
         }
         alert.addAction(closeAction)
@@ -56,7 +92,7 @@ class NewJourneyVC: UIViewController {
         })
             
         } else {
-            let journey = Journey(title: titleTextFiled.text!, image: journeyImageView.image, details: detailsTextView.text)
+            let journey = Journey(title: titleTextFiled.text!, image: journeyImageView.image, details: detailsTextView.text, date: dateTextFiled.text)
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CurrentJourneyEdited"), object: nil, userInfo: ["editedJourney": journey, "editedJourneyIndex": editedJourneyIndex])
             
@@ -66,6 +102,7 @@ class NewJourneyVC: UIViewController {
                 self.navigationController?.popViewController(animated: true)
                 self.titleTextFiled.text = ""
                 self.detailsTextView.text = ""
+                self.dateTextFiled.text = ""
                 
             }
             alert.addAction(closeAction)
@@ -84,7 +121,9 @@ class NewJourneyVC: UIViewController {
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
+        
     }
+
     
     
 }
@@ -95,4 +134,6 @@ extension NewJourneyVC: UIImagePickerControllerDelegate & UINavigationController
         dismiss(animated: true, completion: nil)
         journeyImageView.image = image
     }
+    
+ 
 }

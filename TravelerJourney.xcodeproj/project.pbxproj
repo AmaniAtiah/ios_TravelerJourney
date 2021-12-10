@@ -22,6 +22,7 @@
 		E387C7372756BDC200FA8A7D /* JourneyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E387C7362756BDC200FA8A7D /* JourneyVC.swift */; };
 		E387C7392756BEF100FA8A7D /* Journey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E387C7382756BEF100FA8A7D /* Journey.swift */; };
 		E387C73B2756D60B00FA8A7D /* JourneyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E387C73A2756D60B00FA8A7D /* JourneyCell.swift */; };
+		E3CE15B22762ACFE0075B0E3 /* JournetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CE15B12762ACFE0075B0E3 /* JournetStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		E387C7362756BDC200FA8A7D /* JourneyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyVC.swift; sourceTree = "<group>"; };
 		E387C7382756BEF100FA8A7D /* Journey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journey.swift; sourceTree = "<group>"; };
 		E387C73A2756D60B00FA8A7D /* JourneyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyCell.swift; sourceTree = "<group>"; };
+		E3CE15B12762ACFE0075B0E3 /* JournetStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournetStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,10 @@
 		E387C7052756BB4400FA8A7D /* TravelerJourney */ = {
 			isa = PBXGroup;
 			children = (
+				E3CE15B52762AF7B0075B0E3 /* View Controllers */,
+				E3CE15B42762AF2F0075B0E3 /* Views */,
+				E3CE15B32762AEFE0075B0E3 /* Models  */,
+				E3CE15B02762ACD90075B0E3 /* Storage  */,
 				E387C7062756BB4400FA8A7D /* AppDelegate.swift */,
 				E387C7082756BB4400FA8A7D /* SceneDelegate.swift */,
 				E387C70A2756BB4400FA8A7D /* ViewController.swift */,
@@ -118,11 +124,6 @@
 				E387C70F2756BB4700FA8A7D /* Assets.xcassets */,
 				E387C7112756BB4700FA8A7D /* LaunchScreen.storyboard */,
 				E387C7142756BB4700FA8A7D /* Info.plist */,
-				E387C7362756BDC200FA8A7D /* JourneyVC.swift */,
-				E387C7382756BEF100FA8A7D /* Journey.swift */,
-				E387C73A2756D60B00FA8A7D /* JourneyCell.swift */,
-				E304DDE027584DA500D5102A /* NewJourneyVC.swift */,
-				E33DD4DA275BD22C009271D5 /* JourneyDetailsVC.swift */,
 				E3192C02275D68CD00EBC504 /* JourneyModel.xcdatamodeld */,
 			);
 			path = TravelerJourney;
@@ -143,6 +144,40 @@
 				E387C7292756BB4800FA8A7D /* TravelerJourneyUITestsLaunchTests.swift */,
 			);
 			path = TravelerJourneyUITests;
+			sourceTree = "<group>";
+		};
+		E3CE15B02762ACD90075B0E3 /* Storage  */ = {
+			isa = PBXGroup;
+			children = (
+				E3CE15B12762ACFE0075B0E3 /* JournetStorage.swift */,
+			);
+			path = "Storage ";
+			sourceTree = "<group>";
+		};
+		E3CE15B32762AEFE0075B0E3 /* Models  */ = {
+			isa = PBXGroup;
+			children = (
+				E387C7382756BEF100FA8A7D /* Journey.swift */,
+			);
+			path = "Models ";
+			sourceTree = "<group>";
+		};
+		E3CE15B42762AF2F0075B0E3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E387C73A2756D60B00FA8A7D /* JourneyCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E3CE15B52762AF7B0075B0E3 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E387C7362756BDC200FA8A7D /* JourneyVC.swift */,
+				E304DDE027584DA500D5102A /* NewJourneyVC.swift */,
+				E33DD4DA275BD22C009271D5 /* JourneyDetailsVC.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E387C70B2756BB4400FA8A7D /* ViewController.swift in Sources */,
+				E3CE15B22762ACFE0075B0E3 /* JournetStorage.swift in Sources */,
 				E3192C04275D68CD00EBC504 /* JourneyModel.xcdatamodeld in Sources */,
 				E304DDE127584DA500D5102A /* NewJourneyVC.swift in Sources */,
 				E387C7072756BB4400FA8A7D /* AppDelegate.swift in Sources */,
