@@ -19,3 +19,7 @@
 
 
 يمكن من خلال القائمة في الشاشة الرئيسية حذف وتعديل الرحلة 
+
+
+<img width="308" alt="‏لقطة الشاشة ١٤٤٣-٠٥-٠٦ في ١١ ٤٤ ٠٦ م" src="https://user-images.githubusercontent.com/56774274/145639232-8acead3e-c0ef-4993-aec1-be68628d6eb8.png">
+
